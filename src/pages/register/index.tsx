@@ -38,19 +38,18 @@ const RegisterPage = () => {
         const response = await APICall({
           url: API_URL.REGISTER,
           method: API_METHOD.POST,
-          body: JSON.stringify({
+          body: {
             email: values.email,
             password: values.password,
             username: values.fullName,
-          }),
+          },
         });
 
-        const data = await response.json();
-        if (data.success) {
-          toast.success("Register successfully");
+        if (response.success) {
+          toast.success("Email verification link sent to your email.");
           router.push(PUBLIC_ROUTER.LOGIN);
         } else {
-          toast.error(data.message);
+          toast.error(response.message);
         }
       } catch (error) {
         console.error(error);

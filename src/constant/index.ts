@@ -17,3 +17,5 @@ export const API_METHOD = {
   PATCH: "PATCH",
   DELETE: "DELETE",
 };
+
+export const USER_ID_COOKIE = "userId";

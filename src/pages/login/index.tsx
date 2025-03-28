@@ -36,18 +36,17 @@ const LoginPage = () => {
         const response = await APICall({
           url: API_URL.LOGIN,
           method: API_METHOD.POST,
-          body: JSON.stringify({
+          body: {
             email: values.email,
             password: values.password,
-          }),
+          },
         });
 
-        const data = await response.json();
-        if (data.success) {
+        if (response.success) {
           toast.success("Login successfully");
           router.push(PRIVATE_ROUTER.DASHBOARD);
         } else {
-          toast.error(data.message);
+          toast.error(response.message);
         }
       } catch (error) {
         console.error(error);

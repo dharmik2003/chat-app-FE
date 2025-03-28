@@ -67,12 +67,15 @@ export function ComboboxDemo({
     setSearchQuery("");
   };
 
+  const selectedLabel = options.find(
+    (option) => option.value === Number(value)
+  )?.label;
+
   return (
     <Popover
       open={open}
       onOpenChange={(isOpen) => {
         setOpen(isOpen);
-        // Reset search query when closing
         if (!isOpen) setSearchQuery("");
       }}
     >
@@ -87,7 +90,7 @@ export function ComboboxDemo({
           }}
         >
           {value ? (
-            value
+            selectedLabel
           ) : (
             <Typography
               label={placeholder}
@@ -120,7 +123,7 @@ export function ComboboxDemo({
                       value === option.value.toString()
                         ? "bg-[#F0F0F0] !hover:bg-[#F0F0F0]"
                         : "hover:bg-[#F7F7F7]",
-                      "min-h-[36px] px-2 py-[6px] rounded-[6px] mt-1 !w-full flex justify-between items-center"
+                      "min-h-[36px] px-2 py-[6px] rounded-[6px] mt-1 !w-full flex justify-between items-center cursor-pointer"
                     )}
                   >
                     <div>{option.label}</div>

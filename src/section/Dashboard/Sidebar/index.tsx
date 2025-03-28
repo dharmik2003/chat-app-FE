@@ -88,6 +88,16 @@ const ChatSidebar = ({
             selectedUserId={selectedUserId}
           />
         </div>
+        <div className="flex-shrink-0 p-4">
+          <Button
+            size="icon"
+            variant="ghost"
+            className="bg-blue-500 text-white hover:bg-blue-600 hover:text-white cursor-pointer border-none"
+            onClick={toggleModal}
+          >
+            <Plus className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
 
       <div className="flex-shrink-0 p-4">
@@ -100,6 +110,7 @@ const ChatSidebar = ({
           <Plus className="h-5 w-5" />
         </Button>
       </div>
+
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={toggleModal} className="h-[180px]">
           <UserList
